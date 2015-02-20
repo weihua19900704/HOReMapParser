@@ -92,12 +92,14 @@ bool HOReMap::isHOX( const std::string & ring, const std::string & sector, const
 
 // Process the data from the file (from constructor)
 
-void HOReMap::addFile(const char* file_path, const int & crate_number ){
+void HOReMap::addFile(const char* file_path, const int & crate_number )
+{
   std::ifstream file (file_path);
   std::string line, entry;
   std::vector<std::string> tmp_v;
   std::vector<std::vector<std::string> > raw_data;
-  while ( getline ( file, line ) ){
+  while ( getline ( file, line ) )
+  {
     // Clear white space from the end of the line
     tools::rtrim( line );
     tmp_v.clear();
@@ -107,8 +109,7 @@ void HOReMap::addFile(const char* file_path, const int & crate_number ){
     // Only save the vector if it has the right number of entries
     if ( tmp_v.size() != m_raw_data_n_columns ) continue;
     raw_data.push_back ( tmp_v );
-  }
-  
+  }  
   processRawData ( raw_data, crate_number );
 }
 
@@ -209,13 +210,13 @@ void HOReMap::printHash()
 
 //class box
 HOReMap::box::box():
-  m_int_slot(-1),
   m_side(box::NONE),
   m_row(-1),
   m_column(-1),
   m_str_ring(""),
   m_str_sector(""),
-  m_str_rm_rm_fib("")
+  m_str_rm_rm_fib(""),
+  m_int_slot(-1)
 {}
 
 HOReMap::box::box( const std::vector<std::vector<std::string> > & data,
@@ -258,8 +259,8 @@ HOReMap::ho_box::ho_box():
 HOReMap::ho_box::ho_box( const std::vector<std::vector<std::string> > & data,
                          const box_side & side,  const int& row  , const int & column ):
   box ( data, side , row, column ),
-  m_str_htr_fiber( data[data.size() - 1][column]),
-  m_str_phi  ( data[row+2][column] )
+  m_str_phi  ( data[row+2][column] ),
+  m_str_htr_fiber( data[data.size() - 1][column])
 {
   std::vector<std::string> entries;
   tools::split(m_str_phi, entries, '-');

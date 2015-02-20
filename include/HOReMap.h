@@ -141,7 +141,7 @@ class HOReMap
   std::vector<box> * m_hash_table;
   
   // Raw data info
-  const int m_raw_data_n_columns;
+  const size_t m_raw_data_n_columns;
 
 };
 
