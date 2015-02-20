@@ -120,7 +120,6 @@ void HOReMap::processRawData( const std::vector<std::vector<std::string> > & raw
   const int n_small_rows_per_big_row = 4;
   const int n_small_rows = raw_data.size();
   const int n_big_rows = n_small_rows / n_small_rows_per_big_row;
-  const int n_block_per_row = 9;
 
   for (int i_big_row = 0; i_big_row < n_big_rows; ++i_big_row){
     
